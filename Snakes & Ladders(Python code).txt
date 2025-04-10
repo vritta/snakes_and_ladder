@@ -1,0 +1,64 @@
+Snakes & Ladders(Python code)-->>
+
+import random
+p1,p2,p3=0,0,0
+grid=int(input("Enter grid size:"))
+end=grid*grid
+winner=0
+drp1,drp2,drp3=[],[],[]
+ph1,ph2,ph3=[],[],[]
+while True:
+    tp1=random.randrange(1,7)
+    drp1.append(tp1)
+    ph1.append(p1)
+    if tp1+p1<=end:
+        p1+=tp1
+        if p1==p2:
+            p2=0
+        if p1==p3:
+            p3=0
+    if p1==end:
+        ph1.append(p1)
+        winner=1
+        break
+    tp2=random.randrange(1,7)
+    drp2.append(tp2)
+    ph2.append(p2)
+    if tp2+p2<=end:
+        p2+=tp2
+        if p2==p1:
+            p1=0
+        if p2==p3:
+            p3=0
+    if p2==end:
+        ph2.append(p2)
+        winner=2
+        break
+    tp3=random.randrange(1,7)
+    drp3.append(tp3)
+    ph3.append(p3)
+    if tp3+p3<=end:
+        p3+=tp3
+        if p3==p2:
+            p2=0
+        if p3==p1:
+            p1=0
+    if p3==end:
+        ph3.append(p3)
+        winner=3
+        break
+print("Dice roll history :-\n")
+print("Player 1 -",drp1,"\n")
+print("Player 2 -",drp2,"\n")
+print("Player 3 -",drp3,"\n")
+print("Position history :-\n")
+print("Player 1 -",ph1,"\n")
+print("Player 2 -",ph2,"\n")
+print("Player 3 -",ph3,"\n")
+if winner==1:
+    print("Winner is player: 1")
+if winner==2:
+    print("Winner is player: 2")
+if winner==3:
+    print("Winner is player: 3")
+# print(p1,p2,p3, grid)
