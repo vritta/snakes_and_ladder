@@ -1,0 +1,121 @@
+import random
+p1,p2,p3=0,0,0
+grid=int(input("Enter grid size:"))
+end=grid*grid
+winner=0
+drp1,drp2,drp3=[],[],[]
+ph1,ph2,ph3=[],[],[]
+while True:
+    tp1=random.randrange(1,7)
+    drp1.append(tp1)
+    if tp1+p1<=end:
+        p1+=tp1
+        if p1==p2:
+            p2=0
+        if p1==p3:
+            p3=0
+    if p1==end:
+        ph1.append(p1)
+        winner=1
+        break
+    if p1!=0:
+        ph1.append(p1)
+    # ph2.append(p2)
+    # ph3.append(p3)
+    # Player 2 starts --------------------------------------------------------------------------
+    tp2=random.randrange(1,7)
+    drp2.append(tp2)
+    # ph2.append(p2)
+    if tp2+p2<=end:
+        p2+=tp2
+        if p2==p1:
+            p1=0
+        if p2==p3:
+            p3=0
+    if p2==end:
+        ph2.append(p2)
+        winner=2
+        break
+    # ph1.append(p1)
+    if p2!=0:
+        ph2.append(p2)
+    # ph3.append(p3)
+    # Player 3 starts --------------------------------------------------------------------------
+    tp3=random.randrange(1,7)
+    drp3.append(tp3)
+    # ph3.append(p3)
+    if tp3+p3<=end:
+        p3+=tp3
+        if p3==p2:
+            p2=0
+        if p3==p1:
+            p1=0
+    if p3==end:
+        ph3.append(p3)
+        winner=3
+        break
+    # ph1.append(p1)
+    # ph2.append(p2)
+    if p3!=0:
+        ph3.append(p3)
+print("Dice roll history :-")
+print("Player 1 -",drp1,"\n")
+print("Player 2 -",drp2,"\n")
+print("Player 3 -",drp3,"\n")
+print("Position history :-")
+print("Player 1 -")
+for j in ph1:
+    i=j
+    if i//grid < i/grid:
+        y=i//grid 
+    else:
+        y=i//grid-1
+    if i%grid==0:
+        i=grid-1
+    else:
+        i=i%grid-1
+    if y%2!=0:
+        x=grid-i-1
+    else:
+        x=i
+    print(j,"---> ","x-",x,"y-",y)
+print("Player 2 -")
+for j in ph2:
+    i=j
+    if i//grid < i/grid:
+        y=i//grid 
+    else:
+        y=i//grid-1
+    if i%grid==0:
+        i=grid-1
+    else:
+        i=i%grid-1
+    if y%2!=0:
+        x=grid-i-1
+    else:
+        x=i
+    print(j,"---> ","x-",x,"y-",y)
+print("Player 3 -")
+for j in ph3:
+    i=j
+    if i//grid < i/grid:
+        y=i//grid 
+    else:
+        y=i//grid-1
+    if i%grid==0:
+        i=grid-1
+    else:
+        i=i%grid-1
+    if y%2!=0:
+        x=grid-i-1
+    else:
+        x=i
+    print(j,"---> ","x-",x,"y-",y)
+# Winner calculation --------------------------------------------------------------------------
+if winner==1:
+    print("Winner is player: 1")
+if winner==2:
+    print("Winner is player: 2")
+if winner==3:
+    print("Winner is player: 3")
+# print(p1,p2,p3, grid)
